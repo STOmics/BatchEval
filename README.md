@@ -1,5 +1,5 @@
 [![python >3.8.8](https://img.shields.io/badge/python-3.8.8-brightgreen)](https://www.python.org/)
-
+[![Downloads](https://static.pepy.tech/badge/BatchEval)](https://pepy.tech/project/BatchEval)
 # BatchEval: Batch Effects Evaluation Workflow for Multi-batch Dataset Joint Analysis
 
 As genomic sequencing technology develops, multi-batch joint analysis of gene expression data can maximize the
@@ -30,7 +30,7 @@ employing batch effect removal approaches and how to do so, which is essential f
 ```python
 pip install BatchEval
 ```    
-        
+or        
 ```git
 git clone https://github.com/STOmics/BatchEval.git
 
