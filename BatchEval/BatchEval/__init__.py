@@ -4,4 +4,5 @@
 # @Author  : zhangchao
 # @File    : __init__.py.py
 # @Email   : zhangchao5@genomics.cn
-from .BatchQC import batch_qc
+from .BatchEval import check_raw
+from .BatchEval import batch_eval

@@ -26,7 +26,11 @@ employing batch effect removal approaches and how to do so, which is essential f
 [![scanpy-1.9.1](https://img.shields.io/badge/scanpy-1.9.1-informational)](https://pypi.org/project/scanpy/)
 
 # Install
-
+   
+```python
+pip install BatchEval
+```    
+        
 ```git
 git clone https://github.com/STOmics/BatchEval.git
 
@@ -40,23 +44,32 @@ python setup.py install
 - BatchEval Pipeline           
   Check the batch effects of raw data.
   ```python
-  from BatchEval import batch_qc         
+  import os
+  import scanpy as sc
   
-  batch_qc(*data,
-           qc_mode="raw",
-           adjust_method="harmony",
-           norm_log=True,
-           is_scale=True,
-           n_pcs=50,
-           n_neighbors=100,
-           batch_key="batch",
-           position_key="X_umap",
-           condition=None,
-           use_rep="X_pca",
-           count_key="total_counts",
-           celltype_key=None,
-           report_path="./output")
-  ```       
+  from BatchEval import batch_eval
+  ```
+  
+  ```python
+  data = [sc.read_h5ad(os.path.join("./demo_data", t)) for t in sorted(os.listdir("./demo_data")) if t.endswith("h5ad")]
+  ```
+        
+  ```python
+  batch_eval(*data,
+          qc_mode="raw",
+          norm_log=True,
+          is_scale=True,
+          n_pcs=50,
+          n_neighbors=100,
+          batch_key="batch",
+          position_key="X_umap",
+          condition=None,
+          use_rep="X_pca",
+          count_key="total_counts",
+          celltype_key=None,
+          report_path="./output")
+  ```      
+        
 - **Note: 1) the `data*` is `AnnData` format. 2) In the batchQC pipeline, the original expression will be counted, so
   the input expression matrix should be the original captured expression.**        
   Check the batch effects of adjust data.

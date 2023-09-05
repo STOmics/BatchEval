@@ -9,11 +9,11 @@ import time
 
 def print_time(function):
     def func_time(*args, **kwargs):
-        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} BatchQC Starting")
+        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} BatchEval Pipeline Starting")
         t0 = time.time()
         res = function(*args, **kwargs)
         t1 = time.time()
-        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} BatchQC Done!")
+        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} BatchEval Pipeline Done!")
         t = t1 - t0
         print(f"Total Running Time: {t // 60:}min {t % 60:.4f}s")
         return res

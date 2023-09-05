@@ -7,7 +7,9 @@
 import setuptools
 from wheel.bdist_wheel import bdist_wheel
 
-__version__ = "1.0.3"
+import BatchEval
+
+__version__ = BatchEval.__version__
 
 
 class BDistWheel(bdist_wheel):
@@ -27,7 +29,7 @@ setuptools.setup(
     author="zhangchao",
     author_email="zhangchao5@genomics.cn",
     url="https://github.com/STOmics/BatchEval.git",
-    description="BatchEval",
+    description="BatchEval: Batch Effects Evaluation Workflow for Multi-batch Dataset Joint Analysis",
     python_requires=">=3.8",
     packages=setuptools.find_packages(),
     install_requires=requirements,

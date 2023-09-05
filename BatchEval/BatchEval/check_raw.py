@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 8/10/23 5:38 PM
 # @Author  : zhangchao
-# @File    : batchqc_raw.py
+# @File    : check_raw.py
 # @Email   : zhangchao5@genomics.cn
 import os
 import os.path as osp
@@ -17,21 +17,12 @@ from lxml import etree
 from collections import defaultdict
 
 from BatchEval.module.trainer import domain_variance_score
-from BatchEval.test.cdf_plot import cdf_plot
-from BatchEval.test.describe_data import description_data
-from BatchEval.test.distribution_fitting import distribution_fitting
-from BatchEval.test.heatmap import sample_heatmap
-from BatchEval.test.joint_plot import joint_plot
-from BatchEval.test.kernel_plot import kernel_plot
-from BatchEval.test.metric_score import metric_score
-from BatchEval.test.qq_plot import qq_plot
-from BatchEval.test.umap_plot import umap_plot
-from BatchEval.test.var_mean_plot import var_mean_plot
-from BatchEval.test.variance_test import variance_test
+from BatchEval.test import description_data, variance_test, cdf_plot, kernel_plot, var_mean_plot, qq_plot, \
+    distribution_fitting, metric_score, sample_heatmap, umap_plot, joint_plot
 from BatchEval.utils import check_data, pca_lowrank, embed_text, embed_tabel, embed_table_imgs
 
 
-def batchqc_raw(
+def check_raw(
         *data: AnnData,
         norm_log: bool = False,
         is_scale: bool = False,
@@ -44,7 +35,7 @@ def batchqc_raw(
         celltype_key: Union[str, None] = None,
         report_path: str = "./",
         gpu: Union[str, int] = "0") -> dict:
-    """BatchQC Raw Dataset Pipeline
+    """BatchEval Test Raw Dataset Pipeline
 
     Parameters
     -----------------
@@ -173,7 +164,7 @@ def batchqc_raw(
 
 def generate_report(data_dict: dict,
                     save_path: str) -> None:
-    """Generate BatchQC Report
+    """Generate BatchEval Report
 
     Parameters
     -----------------
@@ -225,6 +216,6 @@ def generate_report(data_dict: dict,
 
     tree = etree.ElementTree(html)
     os.makedirs(save_path, exist_ok=True)
-    tree.write(osp.join(save_path, "BatchQC_report_raw.html"))
+    tree.write(osp.join(save_path, "BatchEval_report_raw.html"))
     print(
-        f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} The 'BatchQC_Report.html' has been saved to {save_path}")
+        f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} The 'BatchEval_report_raw.html' has been saved to {save_path}")

@@ -2,32 +2,32 @@
 # -*- coding: utf-8 -*-
 # @Time    : 8/10/23 5:41 PM
 # @Author  : zhangchao
-# @File    : BatchQC.py
+# @File    : BatchEval.py
 # @Email   : zhangchao5@genomics.cn
 from typing import Union
 from anndata import AnnData
 
-from BatchEval.BatchQC.batchqc_raw import batchqc_raw
+from BatchEval.BatchEval.check_raw import check_raw
 from BatchEval.utils import print_time
 
 
 @print_time
-def batch_qc(*data: AnnData,
-             qc_mode: str = "raw",
-             adjust_method: str = "harmony",
-             norm_log: bool = True,
-             is_scale: bool = False,
-             n_pcs: int = 50,
-             n_neighbors: int = 50,
-             batch_key: str = "batch",
-             position_key: str = "X_umap",
-             use_rep: str = "X_pca",
-             condition: Union[str, list, None] = None,
-             count_key: str = "total_counts",
-             celltype_key: Union[str, None] = None,
-             report_path: str = "./",
-             gpu: Union[str, int] = 0):
-    """BatchQC Raw Dataset Pipeline
+def batch_eval(*data: AnnData,
+               qc_mode: str = "raw",
+               adjust_method: str = "harmony",
+               norm_log: bool = True,
+               is_scale: bool = False,
+               n_pcs: int = 50,
+               n_neighbors: int = 50,
+               batch_key: str = "batch",
+               position_key: str = "X_umap",
+               use_rep: str = "X_pca",
+               condition: Union[str, list, None] = None,
+               count_key: str = "total_counts",
+               celltype_key: Union[str, None] = None,
+               report_path: str = "./",
+               gpu: Union[str, int] = 0):
+    """BatchEval Raw Dataset Pipeline
 
     Parameters
     -----------------
@@ -63,7 +63,7 @@ def batch_qc(*data: AnnData,
     output_dict: 'dict'
     """
     if qc_mode == "raw":
-        batchqc_raw(
+        check_raw(
             *data,
             norm_log=norm_log,
             is_scale=is_scale,
