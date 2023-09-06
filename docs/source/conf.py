@@ -20,15 +20,22 @@ release = '1.0.4'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    'sphinx.ext.todo',
+    'sphinx.ext.viewcode',
+    "sphinx.ext.mathjax",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.intersphinx",
+    'myst_parser',
     'nbsphinx'
 ]
+
+autodoc_member_order = 'bysource'
 
 templates_path = ['_templates']
 exclude_patterns = [
 
 ]
-
-nbsphinx_allow_errors = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

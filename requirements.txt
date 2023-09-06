@@ -1,5 +1,3 @@
-nbsphinx
-myst_parser
 psutil>=5.9.0
 scipy>=1.7.3
 scikit-learn>=1.0.1
