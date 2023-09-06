@@ -1,5 +1,6 @@
 [![python >3.8.8](https://img.shields.io/badge/python-3.8.8-brightgreen)](https://www.python.org/)
 [![Downloads](https://static.pepy.tech/badge/BatchEval)](https://pepy.tech/project/BatchEval)
+[![Documentation Status](https://readthedocs.org/projects/batcheval/badge/?version=latest)](https://batcheval.readthedocs.io/en/latest/?badge=latest)
 # BatchEval: Batch Effects Evaluation Workflow for Multi-batch Dataset Joint Analysis
 
 As genomic sequencing technology develops, multi-batch joint analysis of gene expression data can maximize the
@@ -40,39 +41,7 @@ python setup.py install
 ```
 
 # Tutorial
-
-- BatchEval Pipeline           
-  Check the batch effects of raw data.
-  ```python
-  import os
-  import scanpy as sc
-  
-  from BatchEval import batch_eval
-  ```
-  
-  ```python
-  data = [sc.read_h5ad(os.path.join("./demo_data", t)) for t in sorted(os.listdir("./demo_data")) if t.endswith("h5ad")]
-  ```
-        
-  ```python
-  batch_eval(*data,
-          qc_mode="raw",
-          norm_log=True,
-          is_scale=True,
-          n_pcs=50,
-          n_neighbors=100,
-          batch_key="batch",
-          position_key="X_umap",
-          condition=None,
-          use_rep="X_pca",
-          count_key="total_counts",
-          celltype_key=None,
-          report_path="./output")
-  ```      
-        
-- **Note: 1) the `data*` is `AnnData` format. 2) In the batchQC pipeline, the original expression will be counted, so
-  the input expression matrix should be the original captured expression.**        
-  Check the batch effects of adjust data.
+Quick Start [https://batcheval.readthedocs.io/en/latest/?badge=latest](https://batcheval.readthedocs.io/en/latest/?badge=latest)
 
 # Disclaimer
 
