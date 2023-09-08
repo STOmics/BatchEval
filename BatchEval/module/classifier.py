@@ -98,14 +98,9 @@ class BatchClassifier:
                 x, y = data
                 x = x.to(self.device, non_blocking=True)
                 y = y.long().to(self.device)
-                # with torch.cuda.amp.autocast():
                 y_hat = self.model(x)
                 loss = self.loss_fn(y_hat, y)
                 self.optimizer.zero_grad()
-
-                # self.scaler.scale(loss).backward()
-                # self.scaler.step(self.optimizer)
-                # self.scaler.update()
 
                 loss.backward()
                 self.optimizer.step()

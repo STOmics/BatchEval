@@ -6,5 +6,5 @@
 # @Email   : zhangchao5@genomics.cn
 from .get_neighbors import get_neighbors
 from .kbet import get_kbet
-from .ksim import get_ksim
 from .lisi import get_lisi
+from .silhouette import silhouette

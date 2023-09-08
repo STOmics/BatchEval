@@ -28,11 +28,10 @@ def domain_variance_score(merge_data: AnnData,
                                  batch_size=batch_size,
                                  gpu=gpu)
     classifier.train(max_epochs=500, save_path=save_path)
-    # classifier.validation(pt_path=save_path)
     test_acc = classifier.test(pt_path=save_path)
     df = pd.DataFrame(data={"n_batch": n_batch,
                             "n_sample": merge_data.shape[0],
                             "Train Size": classifier.train_size,
                             "Accept Rate": np.around(1 - test_acc, decimals=4)},
-                      index=["domain variance"])
+                      index=["domain score"])
     return df

@@ -51,7 +51,7 @@ def embed_tabel(dataframe, tree, pos, name, is_round=True):
                                               "text-align: center;"
                                               "padding: 10px;"
                                               "background-color: #507171")
-        th.text = f"{col}".title()
+        th.text = f"{col}"
 
     for idx in dataframe.index:
         tr = etree.SubElement(table, "tr")
@@ -59,7 +59,7 @@ def embed_tabel(dataframe, tree, pos, name, is_round=True):
                                               "border: 2px solid #ddd;"
                                               "text-align: center;"
                                               "padding: 15px;")
-        td.text = f"{idx}".title()
+        td.text = f"{idx}"
         for val in dataframe.loc[idx].values:
             td = etree.SubElement(tr, "td", style="align: center;"
                                                   "border: 2px solid #ddd;")
@@ -79,9 +79,9 @@ def embed_tabel(dataframe, tree, pos, name, is_round=True):
                                               "padding: 15px;"
                                               "background-color: #F0F0F0")
         if col_tag == "describe_note":
-            td.text = "describe note".title()
+            td.text = "describe note"
         elif col_tag == "summary":
-            td.text = "summary".title()
+            td.text = "summary"
         td = etree.SubElement(tr, "td", style="align: center;"
                                               "border: 2px solid #ddd;"
                                               "text-align: center;"
@@ -129,3 +129,45 @@ def embed_table_imgs(buffer_dict, tree, pos, class_name):
 def embed_text(tree, pos, name, text):
     header = tree.xpath(f"//{pos}[@class='{name}']")[0]
     header.text = text
+
+
+def embed_link_list(tree, pos, name, link_dict):
+    assert isinstance(link_dict, dict)
+
+    header = tree.xpath(f"//{pos}[@class='{name}']")[0]
+
+    ul = etree.Element("ul")
+
+    for key in link_dict.keys():
+        li = etree.SubElement(ul, "li")
+        a = etree.SubElement(li, "a", href=link_dict[key])
+        a.text = key
+    header.addnext(ul)
+
+
+def embed_link_table(tree, pos, name, link_dict):
+    assert isinstance(link_dict, dict)
+
+    header = tree.xpath(f"//{pos}[@class='{name}']")[0]
+
+    table = etree.Element("table")
+    tr = etree.SubElement(table, "tr")
+
+    for key in link_dict.keys():
+        td = etree.SubElement(tr, "td", style="align: center;"
+                                              "text-align: center;"
+                                              "padding: 15px;")
+        a = etree.SubElement(td, "a", href=link_dict[key])
+        a.text = key
+    header.addnext(table)
+
+
+def embed_single_link(tree, pos, name, link_dict):
+    assert isinstance(link_dict, dict)
+
+    header = tree.xpath(f"//{pos}[@class='{name}']")[0]
+    for key, val in link_dict.items():
+        a = etree.Element("a", href=val)
+        a.text = "Go Back..."
+        header.addnext(a)
+        break

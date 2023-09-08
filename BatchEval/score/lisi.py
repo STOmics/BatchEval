@@ -41,12 +41,8 @@ def get_lisi(
 
     Returns
     --------------------------------
-    lisi_mean: ``float``
+    lisi_mean:
         Mean of calculated score.
-    lower: ``float``
-        Lower bound of 95% confidence interval.
-    upper: ``float``
-        Upper bound of 95% confidence interval.
     """
     assert key in data.obs_keys()
 
@@ -69,9 +65,10 @@ def get_lisi(
     with Pool(n_jobs) as p:
         results = p.map(partial_lisi, indices)
     results = np.array(results)
-    lisi_mean = results.mean()
+    # lisi_mean = results.mean()
+    lisi_mean = ((results - results.min()) / (results.max() - results.min())).mean()
 
-    std = results.std()
-    lower = lisi_mean - 1.96 * std / np.sqrt(n_sample)
-    upper = lisi_mean + 1.96 * std / np.sqrt(n_sample)
-    return lisi_mean, lower, upper
+    # std = results.std()
+    # lower = lisi_mean - 1.96 * std / np.sqrt(n_sample)
+    # upper = lisi_mean + 1.96 * std / np.sqrt(n_sample)
+    return lisi_mean

@@ -50,6 +50,7 @@ def get_kbet(
 
     Returns
     -----------------------
+    reject_score: `float`
     stat_mean: ``float``
         Mean K-BET chi-square statistic over all cells.
     pvalue_mean: ``float``

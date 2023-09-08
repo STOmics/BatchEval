@@ -4,5 +4,7 @@
 # @Author  : zhangchao
 # @File    : __init__.py.py
 # @Email   : zhangchao5@genomics.cn
-from .BatchEval import check_raw
+from .generate_pages import main_page, raw_page
+
 from .BatchEval import batch_eval
+
