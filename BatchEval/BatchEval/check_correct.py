@@ -73,7 +73,7 @@ def check_correct(merge_data: AnnData,
     # LISI
     ilisi = get_lisi(merge_data, key=batch_key, use_rep=position_key, n_neighbors=n_neighbors)
     clisi = get_lisi(merge_data, key=celltype_key, use_rep=position_key, n_neighbors=n_neighbors)
-    f1_lisi = (2 * (1 - ilisi) * clisi) / (clisi + (1 - ilisi))
+    f1_lisi = (2 * (1 - clisi) * ilisi) / (ilisi + (1 - clisi))
     lisi_df = pd.DataFrame(data={"iLISI": ilisi, f"cLISI({celltype_key})": clisi, "LISI(f1 score)": f1_lisi},
                            index=["Score"])
 
@@ -88,11 +88,11 @@ def check_correct(merge_data: AnnData,
     data_dict["lisi"] = lisi_df
     data_dict["silhouette"] = ss_df
 
-    heatmap_gene_src = sample_heatmap(merge_data, feat_key=use_rep, metric="correlation", batch_key=batch_key)
+    # heatmap_gene_src = sample_heatmap(merge_data, feat_key=use_rep, metric="correlation", batch_key=batch_key)
     umap_batch_src = umap_plot(merge_data, visualize_key=batch_key)
     umap_type_src = umap_plot(merge_data, visualize_key=celltype_key)
     joint_src = joint_plot(merge_data, batch_key=batch_key, use_rep=use_rep)
-    img_dict["heatmap"] = heatmap_gene_src
+    # img_dict["heatmap"] = heatmap_gene_src
     img_dict["umap_batch"] = umap_batch_src
     img_dict["umap_type"] = umap_type_src
     img_dict["joint"] = joint_src

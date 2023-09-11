@@ -37,12 +37,15 @@ def main_page(data_dict: dict,
     html = etree.HTML(pkgutil.get_data("BatchEval", "report_template_main.html").decode())
     embed_basic(html)
 
-    allow_keys = ["describe"]
+    allow_keys = ["describe", "summary-kbet", "summary-score", "summary-conclusion"]
     for key in allow_keys:
         assert key in data_dict.keys()
 
     assert isinstance(data_dict["describe"], pd.DataFrame)
     embed_tabel(data_dict["describe"], html, pos="h4", name="describe", is_round=False)
+    embed_tabel(data_dict["summary-kbet"], html, pos="div", name="div-kbet", is_round=True)
+    embed_tabel(data_dict["summary-score"], html, pos="div", name="div-score", is_round=True)
+    embed_tabel(data_dict["summary-conclusion"], html, pos="div", name="div-conclusion", is_round=False)
 
     embed_link_table(html, pos="div", name="div-content", link_dict=pages_dict)
 

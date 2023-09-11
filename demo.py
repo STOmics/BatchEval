@@ -13,9 +13,9 @@ data = [
 
 batch_eval(*data,
            norm_log=True,
-           is_scale=True,
+           is_scale=False,
            n_pcs=50,
-           n_neighbors=25,
+           n_neighbors=15,
            batch_key="batch",
            position_key="X_umap",
            condition=None,

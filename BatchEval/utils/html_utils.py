@@ -156,8 +156,9 @@ def embed_link_table(tree, pos, name, link_dict):
     for key in link_dict.keys():
         td = etree.SubElement(tr, "td", style="align: center;"
                                               "text-align: center;"
+                                              "border: 2px solid #ddd;"
                                               "padding: 15px;")
-        a = etree.SubElement(td, "a", href=link_dict[key])
+        a = etree.SubElement(td, "a", href=link_dict[key], target="_blank")
         a.text = key
     header.addnext(table)
 

@@ -8,4 +8,4 @@ from .BatchEval import batch_eval
 from warnings import filterwarnings
 
 filterwarnings("ignore")
-__version__ = "1.0.4"
+__version__ = "2.0.0"

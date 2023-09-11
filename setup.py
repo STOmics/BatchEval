@@ -27,7 +27,7 @@ setuptools.setup(
     name="BatchEval",
     version=__version__,
     author="zhangchao",
-    author_email="zhangchao5@genomics.cn",
+    author_email="1623804006@qq.com",
     url="https://github.com/STOmics/BatchEval.git",
     description="BatchEval: Batch Effects Evaluation Workflow for Multi-batch Dataset Joint Analysis",
     python_requires=">=3.8",

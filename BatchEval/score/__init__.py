@@ -8,3 +8,4 @@ from .get_neighbors import get_neighbors
 from .kbet import get_kbet
 from .lisi import get_lisi
 from .silhouette import silhouette
+from .pcr import pcr_comparison
