@@ -177,6 +177,7 @@ def batch_eval(*data: AnnData,
     main_dict.update({"describe": data_dict_raw["describe"]})
     main_page(
         data_dict=main_dict,
+        img_dict=img_dict_raw,
         save_path=report_path,
         save_name="BatchEval Report.html",
         pages_dict={"Raw": "Raw report.html",

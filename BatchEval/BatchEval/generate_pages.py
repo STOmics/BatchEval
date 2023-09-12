@@ -18,6 +18,7 @@ from BatchEval.utils.html_utils import embed_link_table, embed_table_imgs, embed
 
 
 def main_page(data_dict: dict,
+              img_dict: dict,
               save_path: str,
               save_name: str = "BatchEval Report.html",
               pages_dict: dict = {"Raw": "Raw_report.html"}):
@@ -26,6 +27,7 @@ def main_page(data_dict: dict,
     Parameters
     ----------
     data_dict: display dataset
+    img_dict:
     save_path:
     save_name:
     pages_dict: subpage dict, include 'raw page', 'evaluation page' ...
@@ -46,6 +48,8 @@ def main_page(data_dict: dict,
     embed_tabel(data_dict["summary-kbet"], html, pos="div", name="div-kbet", is_round=True)
     embed_tabel(data_dict["summary-score"], html, pos="div", name="div-score", is_round=True)
     embed_tabel(data_dict["summary-conclusion"], html, pos="div", name="div-conclusion", is_round=False)
+
+    embed_statistical_img(img_dict, html)
 
     embed_link_table(html, pos="div", name="div-content", link_dict=pages_dict)
 
@@ -77,7 +81,7 @@ def raw_page(data_dict: dict,
     embed_statistical_table(data_dict, html)
     embed_biological_table(data_dict, html)
 
-    embed_statistical_img(img_dict, html)
+    # embed_statistical_img(img_dict, html)
     embed_biological_img(img_dict, html)
 
     embed_single_link(tree=html, pos="button", name="back2main", link_dict={"Go Back...": "BatchEval Report.html"})
