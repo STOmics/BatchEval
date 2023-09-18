@@ -96,7 +96,7 @@ class BatchClassifier:
             epoch_loss = []
             for idx, data in enumerate(self.train_loader):
                 x, y = data
-                x = x.to(self.device, non_blocking=True)
+                x = x.float().to(self.device, non_blocking=True)
                 y = y.long().to(self.device)
                 y_hat = self.model(x)
                 loss = self.loss_fn(y_hat, y)
@@ -115,9 +115,9 @@ class BatchClassifier:
             if early_stop.counter == 0:
                 torch.save(self.model.state_dict(), osp.join(save_path, "batch_model.bgi"))
             if early_stop.stop_flag:
-                print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} Model Training Finished!")
-                print(
-                    f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} Trained checkpoint file has been saved to {save_path}")
+                # print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} Model Training Finished!")
+                # print(
+                #     f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} Trained checkpoint file has been saved to {save_path}")
                 break
 
     def validation(self, pt_path):
@@ -154,7 +154,7 @@ class BatchClassifier:
         batch_acc = []
         for idx, data in enumerate(self.test_loader):
             x, y = data
-            x = x.to(self.device)
+            x = x.float().to(self.device)
             y = y.long().to(self.device)
             with torch.no_grad():
                 y_hat = self.model(x)
@@ -164,4 +164,6 @@ class BatchClassifier:
             acc = correct / total
             batch_acc.append(acc)
         acc_mean = np.mean(batch_acc)
+        os.remove(osp.join(pt_path, "batch_model.bgi"))
+
         return acc_mean
