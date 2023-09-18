@@ -57,25 +57,25 @@ def batch_eval(*data: AnnData,
 
     Parameters
     -----------------
-    *data: 'Anndata'
+    *data: `Anndata`
         Data matrix with rows for cells and columns for genes.
-    norm_log: 'bool'
+    norm_log: `bool`
         Whether to preprocess data. 'sc.pp.normalization()', 'sc.pp.log1p()'
-    is_scale: 'bool'
+    is_scale: `bool`
          Whether to preprocess data. 'sc.pp.scale()'
-    n_pcs: 'int'
+    n_pcs: `int`
         Number of principal components retained in PCA. default, 50.
-    n_neighbors: 'int'
+    n_neighbors: `int`
         Calculate the nearest neighbors of a local area. default, 100.
-    batch_key: 'str'
+    batch_key: `str`
         Label the data batches.
-    position_key: 'str'
+    position_key: `str`
         Compute the coordinate space of the nearest neighbor.
-    condition: 'str, list, None'
+    condition: `str, list, None`
         Label the experimental conditions. By default, the experimental conditions for each data are different.
-    count_key: 'str'
-    celltype_key: 'str'
-    external_list: 'list'
+    count_key: `str`
+    celltype_key: `str`
+    external_list: `list`
         external integrated data list, and each element should be a dictionary, the dict key as follows,
         key:
             'correct_data',
@@ -84,12 +84,12 @@ def batch_eval(*data: AnnData,
             'use_rep': corrected embedding, and it should be saved in '*.obsm'
             're_umap': whether to re-calculate UMAP
             'batch_key'
-    report_path: 'str'
-    gpu: 'str', 'int'
+    report_path: `str`
+    gpu: `str`, `int`
 
     Return
     -----------------
-    output_dict: 'dict'
+    a series of `HTML` report will be saved in `report_path`
     """
     total_score_df = pd.DataFrame(index=["BatchEval Score"])
     kbet_df = pd.DataFrame(index=["KBET Score", "95% p Value"])

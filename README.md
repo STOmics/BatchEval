@@ -3,18 +3,7 @@
 [![Documentation Status](https://readthedocs.org/projects/batcheval/badge/?version=latest)](https://batcheval.readthedocs.io/en/latest/?badge=latest)
 # BatchEval: Batch Effects Evaluation Workflow for Multi-batch Dataset Joint Analysis
 
-As genomic sequencing technology develops, multi-batch joint analysis of gene expression data can maximize the
-scientific value in the data set, supporting researchers in discovering more significant biological topics. However,
-joint analysis usually misses batch effects caused by abiotic deviations such as external noise in integrated data. When
-the batch effect makes an impact on the results of an experiment, the downstream analytical conclusion, if not the wrong
-experimental result, could have been incorrect. As a result, prior to data integration and processing, the batch effects
-in the data should be thoroughly investigated. We developed the BatchEval Pipeline, which is suitable for massive data
-integration, for evaluating batch effects in data and provide examination conclusions. The BatchEval Pipeline analyses
-multiple batches of data from multiple perspectives to detect how it affects of batch effects on integrated data.
-BatchEval Pipeline generates an HTML webpage report output for the assessment findings, which includes a basic
-explanation of the data, statistical analysis, a batch effect metric score, and visualization. BatchEval Pipeline
-analyses integrated data from multiple perspectives to determine whether it has to be corrected in an additional step
-employing batch effect removal approaches and how to do so, which is essential for downstream analysis.
+As genomic sequencing technology continues to advance, it becomes increasingly important to perform multiple dataset joint analysis of transcriptomics to understand of complex biological systems. However, batch effect removal present challenges for data integration, such as tissue sequencing measured by different platforms, collected at different times. Here, we developed a BatchEval Pipeline, which is used to evaluate batch effect of data integration and output a comprehensive summarized of batch effect. It consists of a series HTML page for the assessment findings, including a main page, raw dataset evaluation page and a series built-in methods of data integration evaluation page. The main page exhibition basic information of integrated data, comprehensive score of batch effect and recommend the best method for batch effect removal of current data.  The residual pages are exhibition the evaluation details of raw dataset and using built-in methods after remove batch effect, respectively. This comprehensive report enables researchers to accurately identify and remove batch effect, resulting in more reliable and meaningful biological insights from integrated datasets. In summary, BatchEval Pipeline represents a significant advancement in the field of batch effect evaluation and provides a valuable tool for researchers to improve the accuracy and reliability of their experimental results.
 
 # Dependences
 
