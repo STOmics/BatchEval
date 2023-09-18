@@ -44,5 +44,5 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 nbsphinx_thumbnails = {
-    'tutorial/Spatially-Resolved-Transcriptomics-Datasets-Measured-Utilizing-Different-Platforms': '_static/face.png'
+    'Tutorial1': '_static/face.png'
 }
