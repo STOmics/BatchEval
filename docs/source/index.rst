@@ -13,7 +13,7 @@ BatchEval: Batch Effects Evaluation Workflow for Multi-batch Dataset Joint Analy
 
    installation
    tutorial/Tutorial
-   api/
+   api/BatchEval
 
 Overview
 ========
