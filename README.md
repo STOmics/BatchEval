@@ -5,6 +5,12 @@
 
 As genomic sequencing technology continues to advance, it becomes increasingly important to perform multiple dataset joint analysis of transcriptomics to understand complex biological systems. However, batch effect presents challenges for dataset integration, such as sequencing measured by different platforms and datasets collected at different times. Here, we develop a BatchEval Pipeline, which is used to evaluate batch effect of dataset integration and output a comprehensive report. This report consists of a series of HTML pages for the assessment findings, including a main page, a raw dataset evaluation page and several built-in methods evaluation pages. The main page exhibits basic information of integrated datasets, comprehensive score of batch effect and the most recommended method for batch effect removal to current datasets. The residual pages exhibit the evaluation details of raw dataset and evaluation results of many built-in batch effect removal methods after removing batch effect. This comprehensive report enables researchers to accurately identify and remove batch effect, resulting in more reliable and meaningful biological insights from integrated datasets. In summary, BatchEval Pipeline represents a significant advancement in batch effect evaluation and is a valuable tool to improve the accuracy and reliability of the experimental results.
 
+# News!!!
+> [2024.02.20] BatchEval is online at [GigaByte](https://gigabytejournal.com/articles/108)!
+            
+### **Cite this article as...**           
+> Chao Zhang,Qiang Kang,Mei Li,Hongqing Xie,Shuangsang Fang,Xun Xu,BatchEval Pipeline: batch effect evaluation workflow for multiple datasets joint analysis,Gigabyte,2024 https://doi.org/10.46471/gigabyte.108
+            
 # Dependences
 
 [![torch-1.10.0](https://img.shields.io/badge/torch-1.10.0-red)](https://pytorch.org/get-started/previous-versions/)
